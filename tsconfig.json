@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "strict": true,
+
+    "module": "ES2022",
+    "downlevelIteration": true,
+
+    "inlineSources": true,
+    "inlineSourceMap": true,
+    "outDir": "build",
+
+    "allowJs": true,
+    "checkJs": true,
+
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"]
+}
