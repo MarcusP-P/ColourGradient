@@ -1,0 +1,6 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "extensions.ignoreRecommendations": false,
+  "prettier.documentSelectors": ["**/*.sh", ".gitignore", ".prettierignore"]
+}
