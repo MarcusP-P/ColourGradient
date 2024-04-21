@@ -11,7 +11,7 @@
   "bracketSameLine": true,
   "arrowParens": "always",
   "proseWrap": "always",
-  "htmlWhitespaceSensitivity": "css",
+  "htmlWhitespaceSensitivity": "ignore",
   "endOfLine": "lf",
   "embeddedLanguageFormatting": "auto",
   "singleAttributePerLine": false,

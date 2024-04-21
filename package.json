@@ -24,6 +24,9 @@
     "serve": "parcel serve --dist-dir build src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "cie-colorconverter": "^3.1.0"
+  },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@parcel/transformer-typescript-tsc": "^2.12.0",
