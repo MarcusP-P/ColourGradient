@@ -13,7 +13,7 @@
   "author": "Marcus Helvig",
   "license": "BSD-2-Clause",
   "scripts": {
-    "build": "parcel build --dist-dir build src/index.html",
+    "build": "parcel build --dist-dir build --public-url . src/index.html",
     "lint": "npm-run-all --sequential lint:typescript lint:eslint lint:prettier",
     "lint:eslint": "eslint --fix src",
     "lint:prettier": "prettier --write .",
@@ -45,7 +45,7 @@
     "typescript-eslint": "^7.7.0"
   },
   "lint-staged": {
-    "*.{ts}": [
+    "*.ts": [
       "eslint --fix",
       "prettier --write"
     ],
