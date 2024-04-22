@@ -1,8 +1,7 @@
 import {
   RGBToLab,
   LabToRGB,
-  //  RGBToXYZ,
-  LabToXYZ,
+  RGBToXYZ,
 } from "../node_modules/cie-colorconverter/dist/index";
 
 declare type NumericTriple = [number, number, number];
@@ -67,14 +66,18 @@ function colourArray(
       const stepValue = (step[index] ?? 0) * currentStep;
       return start + stepValue;
     }) as NumericTriple;
-    const rgb = LabToRGB(currentLab, {
+    let rgb = LabToRGB(currentLab, {
       gammaModel: "sRGB",
       rgbModel: "sRGB",
       refWhite: "D65",
     });
-    const xyz = LabToXYZ(currentLab, {
+    rgb = rgb.map((x) => (x < 0 ? 0 : x > 255 ? 255 : x)) as NumericTriple;
+    const xyz = RGBToXYZ(currentLab, {
+      gammaModel: "sRGB",
+      rgbModel: "sRGB",
       refWhite: "D65",
     });
+    console.dir(rgb);
     const colour = arrayToColourString(rgb.slice() as NumericTriple);
     colours.push({colour: colour, Luminance: xyz[1]});
   }
