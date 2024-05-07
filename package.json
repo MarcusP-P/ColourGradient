@@ -28,12 +28,12 @@
     "cie-colorconverter": "^3.1.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.0.0",
+    "@eslint/js": "^9.2.0",
     "@parcel/transformer-typescript-tsc": "^2.12.0",
     "@parcel/validator-typescript": "^2.12.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "globals": "^15.0.0",
+    "globals": "^15.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "npm-run-all": "^4.1.5",
@@ -42,7 +42,7 @@
     "prettier-plugin-pkg": "0.18.1",
     "prettier-plugin-sh": "0.14.0",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^7.7.0"
+    "typescript-eslint": "^7.8.0"
   },
   "lint-staged": {
     "*.ts": [
