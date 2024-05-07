@@ -17,7 +17,7 @@
   "singleAttributePerLine": false,
   "overrides": [
     {
-      "files": ["**/*.sh", ".gitignore", ".prettierignore"],
+      "files": ["**/*.sh", ".gitignore"],
       "options": {
         "parser": "sh"
       }
