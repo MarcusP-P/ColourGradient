@@ -26,5 +26,5 @@
 
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["eslint.config.mjs", "build/**/*"]
+  "exclude": ["eslint.config.mjs", "build/**/*", "serve/**/*"]
 }

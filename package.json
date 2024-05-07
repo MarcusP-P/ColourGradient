@@ -14,14 +14,21 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "build": "parcel build --dist-dir build --public-url . src/index.html",
+    "clean": "npm-run-all clean:cache clean:build clean:serve clean:husky clean:node_modules",
+    "clean:build": "rimraf build",
+    "clean:cache": "rimraf .parcel-cache",
+    "clean:husky": "rimraf .husky/_",
+    "clean:node_modules": "rimraf node_modules",
+    "clean:serve": "rimraf serve",
     "lint": "npm-run-all --sequential lint:typescript lint:eslint lint:prettier",
     "lint:eslint": "eslint --fix src",
     "lint:prettier": "prettier --write -l .",
     "lint:typescript": "tsc --noEmit",
-    "prebuild": "npm-run-all lint",
+    "prebuild": "npm-run-all --sequential lint clean:build clean:cache",
     "prepare": "husky",
+    "preserve": "npm-run-all --sequential lint clean:serve clean:cache",
     "pretest": "npm-run-all lint",
-    "serve": "parcel serve --dist-dir build src/index.html",
+    "serve": "parcel serve --dist-dir serve src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -41,6 +48,7 @@
     "prettier": "3.2.5",
     "prettier-plugin-pkg": "0.18.1",
     "prettier-plugin-sh": "0.14.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0"
   },
