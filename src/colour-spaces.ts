@@ -2,6 +2,12 @@ import {
   ConverterOptions,
   RGBToLab as RGB2Lab,
   LabToRGB as Lab2RGB,
+  LCHabToRGB as LCHab2RGB,
+  RGBToLCHab as RGB2LCHab,
+  RGBToLuv as RGB2Luv,
+  LuvToRGB as Luv2RGB,
+  LCHuvToRGB as LCHuv2RGB,
+  RGBToLCHuv as RGB2LCHuv,
   RGBToXYZ as RGB2XYZ,
 } from "../node_modules/cie-colorconverter/dist/index";
 
@@ -19,6 +25,39 @@ export function RGBToLab(rgb: NumericTriple): NumericTriple {
 
 export function LabToRGB(lab: NumericTriple): NumericTriple {
   const rgb = Lab2RGB(lab, colourSpaceOptions)
+    .map((x) => (x < 0 ? 0 : x > 255 ? 255 : x))
+    .slice() as NumericTriple;
+  return rgb;
+}
+
+export function RGBToLCHab(rgb: NumericTriple): NumericTriple {
+  return RGB2LCHab(rgb, colourSpaceOptions).slice() as NumericTriple;
+}
+
+export function LCHabToRGB(lab: NumericTriple): NumericTriple {
+  const rgb = LCHab2RGB(lab, colourSpaceOptions)
+    .map((x) => (x < 0 ? 0 : x > 255 ? 255 : x))
+    .slice() as NumericTriple;
+  return rgb;
+}
+
+export function RGBToLuv(rgb: NumericTriple): NumericTriple {
+  return RGB2Luv(rgb, colourSpaceOptions).slice() as NumericTriple;
+}
+
+export function LuvToRGB(lab: NumericTriple): NumericTriple {
+  const rgb = Luv2RGB(lab, colourSpaceOptions)
+    .map((x) => (x < 0 ? 0 : x > 255 ? 255 : x))
+    .slice() as NumericTriple;
+  return rgb;
+}
+
+export function RGBToLCHuv(rgb: NumericTriple): NumericTriple {
+  return RGB2LCHuv(rgb, colourSpaceOptions).slice() as NumericTriple;
+}
+
+export function LCHuvToRGB(lab: NumericTriple): NumericTriple {
+  const rgb = LCHuv2RGB(lab, colourSpaceOptions)
     .map((x) => (x < 0 ? 0 : x > 255 ? 255 : x))
     .slice() as NumericTriple;
   return rgb;

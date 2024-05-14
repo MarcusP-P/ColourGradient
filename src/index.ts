@@ -1,4 +1,11 @@
-import {calculateLinearColourArray} from "./calculate-linear";
+import {
+  calculateLinearColourArrayLab,
+  calculateLinearColourArrayLuv,
+} from "./calculate-linear";
+import {
+  calculateSaturatedColourArrayLab,
+  calculateSaturatedColourArrayLuv,
+} from "./calculate-polar";
 import {
   NumericTriple,
   numericTripleToColour,
@@ -31,17 +38,43 @@ function steps(): number {
 submitButton.addEventListener("click", startCalcuation);
 
 function startCalcuation() {
-  resultContainer.innerText = "";
+  resultContainer.innerHTML = "<h2>Results</h2>";
   colourStringToNumericTriple(firstColourInput.value);
   const startRGB = startColour();
   const endRGB = endColour();
   const StepCount = steps();
-  const colours = calculateLinearColourArray(startRGB, endRGB, StepCount);
-  populateResults(colours);
+  const linearColoursLab = calculateLinearColourArrayLab(
+    startRGB,
+    endRGB,
+    StepCount,
+  );
+  populateResults("Lab Linear", linearColoursLab);
+  const linearColoursLuv = calculateLinearColourArrayLuv(
+    startRGB,
+    endRGB,
+    StepCount,
+  );
+  populateResults("Luv Linear", linearColoursLuv);
+  const saturatedColoursLab = calculateSaturatedColourArrayLab(
+    startRGB,
+    endRGB,
+    StepCount,
+  );
+  populateResults("Lab Keep Saturation", saturatedColoursLab);
+  const saturatedColoursLuv = calculateSaturatedColourArrayLuv(
+    startRGB,
+    endRGB,
+    StepCount,
+  );
+  populateResults("Luv Keep Saturation", saturatedColoursLuv);
 }
 
-function populateResults(colours: NumericTriple[]) {
+function populateResults(title: string, colours: NumericTriple[]) {
   let previousRgb: NumericTriple | undefined;
+
+  const heading = document.createElement("h3");
+  heading.innerText = title;
+  resultContainer.appendChild(heading);
 
   for (const rgb of colours) {
     const currentResult = document.createElement("div");
