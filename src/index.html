@@ -5,15 +5,16 @@
   </head>
   <body>
     <h1>Colour Spectrum</h1>
-    <form>
-      <label for="start-colour">Initial colorr</label>
+    <fieldset>
+      <legend>Colour configuration</legend>
+      <label for="start-colour">Initial colour</label>
       <input id="start-colour" type="color" value="#2f3488" />
       <label for="end-colour">Final colour</label>
       <input id="end-colour" type="color" value="#7cb544" />
       <label for="steps">Number of steps</label>
       <input id="steps" type="number" value="7" min="2" />
       <button id="generate" type="button">Generate samples</button>
-    </form>
+    </fieldset>
     <div id="results" />
     <script type="module" src="./index.ts"></script>
   </body>
