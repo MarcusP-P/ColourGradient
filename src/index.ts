@@ -3,8 +3,10 @@ import {
   calculateLinearColourArrayLuv,
 } from "./calculate-linear";
 import {
-  calculateSaturatedColourArrayLab,
-  calculateSaturatedColourArrayLuv,
+  calculateSaturatedColourArrayLabClockwise,
+  calculateSaturatedColourArrayLabCounterClockwise,
+  calculateSaturatedColourArrayLuvClockwise,
+  calculateSaturatedColourArrayLuvCounterClockwise,
 } from "./calculate-polar";
 import {
   NumericTriple,
@@ -43,30 +45,50 @@ function startCalcuation() {
   const startRGB = startColour();
   const endRGB = endColour();
   const StepCount = steps();
+
   const linearColoursLab = calculateLinearColourArrayLab(
     startRGB,
     endRGB,
     StepCount,
   );
-  populateResults("Lab Linear", linearColoursLab);
+  populateResults("Lab linear", linearColoursLab);
+
+  const saturatedColoursLabClockwise =
+    calculateSaturatedColourArrayLabClockwise(startRGB, endRGB, StepCount);
+  populateResults("Lab preserve saturation 1", saturatedColoursLabClockwise);
+
+  const saturatedColoursLabCounterClockwise =
+    calculateSaturatedColourArrayLabCounterClockwise(
+      startRGB,
+      endRGB,
+      StepCount,
+    );
+  populateResults(
+    "Lab preserve saturation 2",
+    saturatedColoursLabCounterClockwise,
+  );
+
   const linearColoursLuv = calculateLinearColourArrayLuv(
     startRGB,
     endRGB,
     StepCount,
   );
-  populateResults("Luv Linear", linearColoursLuv);
-  const saturatedColoursLab = calculateSaturatedColourArrayLab(
-    startRGB,
-    endRGB,
-    StepCount,
+  populateResults("Luv linear", linearColoursLuv);
+
+  const saturatedColoursLuvClockwise =
+    calculateSaturatedColourArrayLuvClockwise(startRGB, endRGB, StepCount);
+  populateResults("Luv preserve saturation 1", saturatedColoursLuvClockwise);
+
+  const saturatedColoursLuvCoubnterClockwise =
+    calculateSaturatedColourArrayLuvCounterClockwise(
+      startRGB,
+      endRGB,
+      StepCount,
+    );
+  populateResults(
+    "Luv preserve saturation 2",
+    saturatedColoursLuvCoubnterClockwise,
   );
-  populateResults("Lab Keep Saturation", saturatedColoursLab);
-  const saturatedColoursLuv = calculateSaturatedColourArrayLuv(
-    startRGB,
-    endRGB,
-    StepCount,
-  );
-  populateResults("Luv Keep Saturation", saturatedColoursLuv);
 }
 
 function populateResults(title: string, colours: NumericTriple[]) {
